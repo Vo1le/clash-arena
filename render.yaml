@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: clash-arena
+    env: node
+    # Render détecte Node.js automatiquement depuis package.json
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    # Instance free tier
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # À remplir dans le dashboard Render :
+      - key: VITE_DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: UNB_API_TOKEN
+        sync: false
+      - key: GUILD_ID
+        sync: false

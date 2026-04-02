@@ -391,3 +391,39 @@ body::before{
 .tt-stats{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .tt-stat{font-size:10px;color:var(--cr-text);background:rgba(255,255,255,.05);border-radius:4px;padding:4px 6px;text-align:center}
 .tt-stat span{color:var(--cr-gold);font-weight:700}
+
+/* ── Hand wrap avec boutons de rotation ─────────────────────────── */
+.hand-wrap{display:flex;align-items:center;gap:4px}
+.hand-nav{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:var(--cr-text);border-radius:8px;width:28px;height:64px;
+  font-size:20px;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--speed);
+}
+.hand-nav:hover{background:rgba(255,215,0,.15);border-color:var(--cr-border)}
+.hand-nav:active{transform:scale(.95)}
+
+/* ── Carte verrouillée deck editor ──────────────────────────────── */
+.card-item.locked{opacity:.55;cursor:default}
+.card-item.locked:hover{transform:none;box-shadow:none}
+.card-lock{position:absolute;top:3px;right:3px;font-size:10px}
+
+/* ── Animation carte jouée volant vers la tour ──────────────────── */
+@keyframes cardFlyUp{
+  0%  {transform:translateY(0) scale(1);opacity:1}
+  60% {transform:translateY(-70px) scale(1.3);opacity:1}
+  100%{transform:translateY(-130px) scale(.5);opacity:0}
+}
+@keyframes cardFlyDown{
+  0%  {transform:translateY(0) scale(1);opacity:1}
+  60% {transform:translateY(70px) scale(1.3);opacity:1}
+  100%{transform:translateY(130px) scale(.5);opacity:0}
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media(max-width:360px){
+  .cards-grid{grid-template-columns:repeat(4,1fr);gap:5px}
+  .hand-card{width:52px}
+  .hand-nav{width:22px}
+}
